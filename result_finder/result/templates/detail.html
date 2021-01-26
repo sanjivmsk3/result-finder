@@ -1,26 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h6></h6>
 <div class="container mb-5">
     
     <div class="row">
         <div class="col-lg-8 mt-2 mx-auto">
            
             <div class="card">
-                
             <div class="card-body bg-primary mb-4">
-            <h2 class="display text-center ">Bihar Engineering MarkSheet</h2>
+            <h2 class="display text-center text-white">{{ stu.course.course_name }}</h2>
             </div>
-            
+            <h5 style="background-color: #eceff1;" class="text-center">PERSONAL DETAILS</h5>
              <div class="row">
                  <div class="col-lg-4">
-                   <div class="card-body">
+                     <img src="{{ stu.image.url }}" width="290px" height="200px" alt="">
                  </div>
-                 </div>
-                 <div class="col-lg-7 ml-3">
-                     <table class="table">
-                              
+                 <div class="col-lg-8 ml-3">
+                     <table class="table">       
                    <tr>
                       <td>name</td>
                       <td>{{ stu.name }}</td>
@@ -28,47 +24,100 @@
                   
                    <tr>
                       <td>Father's name</td>
-                      <td>{{ result.0.father_name }}</td>
+                      <td>{{ stu.fathers_name }}</td>
                   </tr>
                     
                    <tr>
-                      <td>dob</td>
-                      <td>{{ result.0.dob }}</td>
+                    <td>Mother's name</td>
+                    <td>{{ stu.mothers_name }}</td>
                   </tr>
                   
                    <tr>
-                      <td>Gender</td>
-                      <td>{{ result.0.gender }}</td>
+                      <td>dob</td>
+                      <td>{{ stu.date_of_birth }}</td>
                   </tr>
                     
                    <tr>   
-                      <td>roll_no</td>
-                      <td>{{ result.0.roll_no }}</td>
+                      <td>Roll No</td>
+                      <td>{{ stu.roll_no }}</td>
                    </tr>
-                     
-                   <tr>        
-                      <td>roll_code</td>
-                      <td>{{ result.0.roll_code }}</td>
-                  </tr> 
-              </table>
-           </div>
-       </div> 
-                   
-            <table class="table">
-                 <tr>        
-                      <th>Full Marks</th>
-                      <th>pass Mark</th>
-                      <th>opten Mark</th>
-                      <th>Rank</th>
-                  </tr>
-                  
-                   <tr>        
-                      <td>200</td>
-                      <td>40</td>
-                      <td>{{ result.0.marks}}</td>
-                      <td>{{ result.0.renk}}</td>
-                  </tr>
-               </table>
+                </table>
+         </div>
+     </div> 
+     <div class="row">
+         <div class="col-lg-12">
+             <h5 style="background-color: #eceff1;" class="text-center">MARKS DETAILS</h5>
+             <table class="table"> 
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Full Marks</th>
+                    <th>Pass Marks</th>
+                    <th>Total Mark</th>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>HINDI</td>
+                    <td>100</td>
+                    <td>30</td>
+                    <td>{{stu.hindi}}</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>MATH</td>
+                    <td>100</td>
+                    <td>30</td>
+                    <td>{{stu.math}}</td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>SANSKRIT</td>
+                    <td>100</td>
+                    <td>30</td>
+                    <td>{{stu.sanskrit}}</td>
+                </tr>
+                <tr>
+                    <td>104</td>
+                    <td>SCIENCE</td>
+                    <td>100</td>
+                    <td>30</td>
+                    <td>{{stu.scielce}}</td>
+                </tr>
+                <tr>
+                    <td>105</td>
+                    <td>SOCIAL SCIENCE</td>
+                    <td>100</td>
+                    <td>30</td>
+                    <td>{{stu.social_scielce}}</td>
+                </tr>
+                <tr>
+                    <td>106</td>
+                    <td>ENGLISH</td>
+                    <td>100</td>
+                    <td>30</td>
+                    <td>{{stu.english}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>600</td>
+                    <td>180</td>
+                    <td>AGGREATE : {{ stu.total_mark }}</td>
+                </tr>
+                <tr>
+                    {% if stu.total_mark >= 300 %}
+                        <th class="text-success">RESULT :1st DIV </th>
+                    {% elif stu.total_mark >= 225 %}
+                        <th class="text-primary">RESULT :2nd DIV</th>
+                    {% elif stu.total_mark >= 150 %}
+                        <th class="text-primary">RESULT :3rd DIV</th>
+                    {% else %}
+                        <th class="text-danger">Result :FAIL</th>
+                    {% endif %}
+                </tr>
+             </table>
+         </div>
+     </div>
            
   
     </div>

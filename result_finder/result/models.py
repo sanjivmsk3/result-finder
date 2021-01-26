@@ -29,6 +29,7 @@ class Course(models.Model):
 
 class Student_detail(models.Model):
     name = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='photo/')
     roll_no = models.IntegerField()
     date_of_birth = models.DateField()
     fathers_name = models.CharField(max_length=40)
@@ -44,3 +45,6 @@ class Student_detail(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def total_mark(self):
+        return self.hindi + self.sanskrit + self.math + self.scielce + self.social_scielce + self.english

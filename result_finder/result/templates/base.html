@@ -12,15 +12,24 @@
         <div class="container">
             <a href="{% url 'home' %}" class="navbar-brand" style="font-family: cursive;"> <img width="60px" style="margin-left: 50px;" src="https://th.bing.com/th/id/OIP.HaImOF8a38x6UqYWOx5bNgHaHa?pid=Api&w=700&h=700&rs=1" alt=""> <br> India's Results-Finder</a>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{% url 'home' %}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">About</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'signup' %}" class="nav-link">Admin SignUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link">LogOut</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">Admin LogIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'about' %}" class="nav-link">About</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -33,7 +42,7 @@
             <div style="padding:5px; font-size:13px; font-weight:bold; color:#333;">
                 Welcome,</br></br>In order to provide you most personalized and 
                 convenient browsing experience with your favorite portal 
-                India's Results-Finder, We want you to select your state and proceed further. 
+                <i class="text-success fw-bold">India's Result Finder</i>, We want you to select your state and proceed further. 
                 In case you need to change it later, you can select it again on the 
                 home page.. ...</div>
             <div class="card" style="width:950px; float:left;height:292px; background-color:#ffffff; margin-top:40px; border:3px solid #555555;">
@@ -54,20 +63,5 @@
         <hr style="height: 2.5px; margin-top: 10px;">
     </div>
 {% endblock %}
-
-<!-- <nav class="navbar fixed-bottom navbar-dark bg-dark">
-    <div class="container" style="width: 100%;">
-        <div class="row">
-            <div class="col-lg-3">          
-                <a href="{% url 'home' %}" class="navbar-brand" style="font-family: cursive;"> <img width="60px" style="margin-left: 50px;" src="https://th.bing.com/th/id/OIP.HaImOF8a38x6UqYWOx5bNgHaHa?pid=Api&w=700&h=700&rs=1" alt=""> <br> India's Results-Finder</a>
-            </div>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6 text-white">
-                <h6>OVERVIEW</h6>
-                <p>......................................</p>
-            </div>
-        </div>
-    </div>    
-</nav> -->
 </body>
 </html>

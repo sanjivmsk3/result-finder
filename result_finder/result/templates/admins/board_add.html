@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="row mt-5">
+    <div class="col-lg-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-center h5 text-white">Add Boards</div>
+            <div class="mt-4">
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add-boards' %}" method="POST">
+                    {% csrf_token %}
+                    {{bo_add|crispy}}
+                    <div class="d-grid mt-4">
+                        <input class="btn btn-primary" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

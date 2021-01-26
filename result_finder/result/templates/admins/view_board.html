@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-12 mt-2">
+            <table class="table table-sm table-hover">
+                <tr class="bg-primary text-white">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>State</th>
+                    <th>Slug</th>
+                    <th>Action</th>
+                </tr>
+                {% for foo in v_board %}
+                    <tr>
+                        <td>{{ foo.id }}</td>
+                        <td>{{ foo.board_name }}</td>
+                        <td>{{ foo.board_details|truncatechars:50 }}</td>
+                        <td>{{ foo.state.state }}</td>
+                        <td>{{ foo.slug }}</td>
+                        <td>edit</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+        </div>
+
+{% endblock %}

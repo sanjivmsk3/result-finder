@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="row mt-5">
+    <div class="col-lg-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-center h5 text-white">Add Student Details</div>
+            <div class="mt-4">
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add_stu_detail' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ad_stu_detail|crispy}}
+                    <div class="d-grid mt-2">
+                        <input class="btn btn-primary" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-12 mt-2">
+            <table class="table table-sm table-hover">
+                <tr class="bg-primary text-white">
+                    <th>ID</th>
+                    <th>image</th>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>DOB</th>
+                    <th>Father's Name</th>
+                    <th>Mother's Name</th>
+                    <th>Course Name</th>
+                    <th>Slug</th>
+                    <th>Action</th>
+                </tr>
+                {% for foo in v_stu_detail %}
+                    <tr>
+                        <td class="fw-bold">{{ foo.id }}</td>
+                        <td><img src="{{ foo.image.url }}" width="150px" alt=""></td>
+                        <td>{{ foo.name }}</td>
+                        <td>{{ foo.roll_no }}</td>
+                        <td>{{ foo.date_of_birth }}</td>
+                        <td>{{ foo.fathers_name }}</td>
+                        <td>{{ foo.mothers_name }}</td>
+                        <td>{{ foo.course.course_name }}</td>
+                        <td>{{ foo.slug }}</td>
+                        <td class="fw-bolder text-warning">Update</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+        </div>
+
+{% endblock %}
